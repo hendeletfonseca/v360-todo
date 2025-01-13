@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  root to: "todos#index"
+  resource :session
+  resource :registration, only: %i[new create] do
+    get "/", to: "registrations#new"
+  end
+  resources :passwords, param: :token
   resources :todos
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
