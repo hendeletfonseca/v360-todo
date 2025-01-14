@@ -1,0 +1,22 @@
+<%= form_for @todo do |f| %>
+  <div class="flex flex-col gap-4 mt-8 justify-between w-full">
+    <div id="<%= dom_id @todo %>">
+      <div>
+        <%= f.label :Título, class: "block font-medium text-sm py-4" %>
+        <%= f.text_field :title, class: "border border-gray-300 px-4 py-2 rounded-lg" %>
+      </div>
+    </div>
+
+    <div id="<%= dom_id @todo %>">
+      <div>
+        <%= f.label :Descrição, class: "block font-medium text-sm py-4" %>
+        <%= f.text_area :description, class: "border border-gray-300 px-4 py-2 rounded-lg", rows: 4 %>
+      </div>
+    </div>
+
+    <div class="flex gap-4 mt-4">
+      <%= f.submit "Salvar", class: "border-2 border-blue-600 px-4 py-2 rounded-full text-blue-600 hover:bg-blue-600 hover:text-white" %>
+      <%= link_to 'Cancelar', todos_path, class: "border border-dashed border-gray-300 hover:border-red-600 px-4 py-2 rounded-full text-gray-400 hover:text-red-600" %>
+    </div>
+  </div>
+<% end %>

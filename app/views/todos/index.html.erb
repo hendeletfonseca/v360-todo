@@ -1,0 +1,32 @@
+<% content_for :title, "Todos" %>
+
+<section class="block w-full bg-zinc-100 py-8 px-4 border border-gray-200 rounded-md shadow-sm">
+
+  <%= render "search", todo: @todo %>
+
+  <div class="flex justify-between items-center">
+    <h1 class="text-3xl font-bold text-orange-600">Todos</h1>
+
+    <% if params[:text].present? %>
+      <%= link_to todos_path, class: "border border-orange-600 px-4 py-2 rounded-full text-orange-600 hover:bg-orange-600 hover:text-white" do %>
+        Remover filtros
+      <% end %>
+    <% end %>
+
+    <%= link_to new_todo_path, class: "border border-orange-600 px-4 py-2 rounded-full text-orange-600 hover:bg-orange-600 hover:text-white" do %>
+      <span class="sr-only">Add</span>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 448 512" fill="currentColor" title="Add todo">
+        <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 144L48 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l144 0 0 144c0 17.7 14.3 32 32 32s32-14.3 32-32l0-144 144 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-144 0 0-144z"/>
+      </svg>
+    <% end %>
+  </div>
+
+  <div id="todos-list" class="flex flex-col gap-4 mt-8">
+    <% @todos.each do |todo| %>
+      <div id="todos" class="flex justify-between items-center rounded-lg py-4 px-6 border border-gray-300 shadow-sm bg-white">
+        <%= render todo %>
+      </div>
+    <% end %>
+  </div>
+
+</section>

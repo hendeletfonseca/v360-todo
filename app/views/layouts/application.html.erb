@@ -24,8 +24,14 @@
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
-      <%= yield %>
+    <nav class="bg-zinc-200 p-4">
+      <ul class="flex justify-between">
+        <li><%= link_to "Tarefas", root_path, class: " text-xl text-red-500 hover:underline" %></li>
+        <li><%= button_to "Sair", session_path, method: :delete, data: { confirm: "Tem certeza?" }, class: "text-xl text-red-500 hover:underline" if authenticated? %></li>
+      </ul>
+    </nav>
+    <main class="min-h-screen flex bg-zinc-100">
+        <%= yield %>
     </main>
   </body>
 </html>
